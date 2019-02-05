@@ -1,4 +1,4 @@
-RubySchool, Lesson 24
+RubySchool, Lesson 26
 ====================
-Some update
-Repository for Lesson 24
+Branch for lesson 26
+Repository for Lesson 26
