@@ -4,17 +4,17 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 configure do
-	@db = sqlite3::Database.new 'User.db'
-	@db.execute 'CREATE TABLE IF NOT EXIST
-	"Users"
-	(
-		"id" INTEGER PRIMARY KEY AUTOINCREMENT
-		"username" TEXT
-		"phone" TEXT
-		"datestampe" TEXT
-		"barber" TEXT
-		"color" TEXT
-	)'
+	@db = SQLite3::Database.new "barbershop.db"
+	@db.execute 'CREATE TABLE IF NOT EXISTS
+		"Users"
+		(
+			"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+			"username" TEXT
+			"phone" TEXT
+			"datestampe" TEXT
+			"barber" TEXT
+			"color" TEXT
+		)'
 end
 
 get '/' do
