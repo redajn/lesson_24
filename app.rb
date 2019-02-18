@@ -3,6 +3,9 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+def is_barber_exists? db,name
+	db.execute('select * frob Barbers where name = ?', [name])
+end
 def get_db
 	return SQLite3::Database.new 'barbershop.db'
 
@@ -19,6 +22,13 @@ configure do
 			"datestamp" TEXT,
 			"barber" TEXT,
 			"color" TEXT
+		)';
+
+	db.execute 'CREATE TABLE IF NOT EXISTS
+		"Barbers"
+		(
+			"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+			"name" TEXT
 		)';
 end
 
