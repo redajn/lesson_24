@@ -5,6 +5,7 @@ require 'sqlite3'
 
 def get_db
 	return SQLite3::Database.new 'barbershop.db'
+
 end
 
 configure do
@@ -69,7 +70,8 @@ end
 
 get '/showusers' do
 	db = get_db
-	@results = db.execute 'select * from Users'
+	db.results_as_hash = true
+	@results = db.execute 'select * from Users order by id asc'
 	erb :showusers
 end
 
