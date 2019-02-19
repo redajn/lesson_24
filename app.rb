@@ -53,6 +53,9 @@ get '/about' do
 end
 
 get '/visit' do
+	db = get_db
+	db.results_as_hash = true
+	@available_barbers = db.execute 'select * from Barbers order by id asc'
 	erb :visit
 end
 
