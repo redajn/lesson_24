@@ -40,13 +40,14 @@
 			    <ul class="nav navbar-nav">
 			      <li><a href="/about">About</a></li>
 			      <li><a href="/visit">Записаться</a></li>
+			      <li><a href="/showusers">Свободное время</a></li>
 			      <li><a href="/contacts">Contacts</a></li>
 			    </ul>
 			  </div><!--/.nav-collapse -->
 			</nav>
 
 			<div>
-			      <%if @error then %>
+			      <%if @error && @error.length > 0 then %>
 			          <div class="alert alert-danger"><%=@error%></div>
 			      <% end %>
 			      <%= yield %>
