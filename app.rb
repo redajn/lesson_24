@@ -16,8 +16,13 @@ def seed_db db, barbers
 end
 
 def get_db
-	return SQLite3::Database.new 'barbershop.db'
+	return SQLite3::Database.new 'barbershop.db'	
+end
 
+before do
+	db = get_db
+	db.results_as_hash = true
+	@available_barbers = db.execute 'select * from Barbers order by id asc'
 end
 
 configure do
@@ -53,9 +58,6 @@ get '/about' do
 end
 
 get '/visit' do
-	db = get_db
-	db.results_as_hash = true
-	@available_barbers = db.execute 'select * from Barbers order by id asc'
 	erb :visit
 end
 
